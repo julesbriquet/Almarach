@@ -1,0 +1,12 @@
+Library
+Temp
+*.userprefs
+*.suo
+*.sln
+*.csproj
+*.db
+*.db.meta
+Web
+obj
+Assets/UnityVS*
+Build
