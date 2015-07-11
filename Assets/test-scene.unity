@@ -1070,12 +1070,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStunned: 0
+  isDead: 0
   controls: 1
   speed: 4
   inertiaFriction: .400000006
   powerUpAvailable: 1
-  powerUpDuration: 1000
+  powerUpDuration: 750
   powerUpCooldown: 5000
+  RespawnTime: 2000
+  _score: 0
+  CarriedItems: []
 --- !u!1 &510719084
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,12 +3039,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStunned: 0
+  isDead: 0
   controls: 3
   speed: 4
   inertiaFriction: .400000006
   powerUpAvailable: 1
   powerUpDuration: 1000
   powerUpCooldown: 5000
+  RespawnTime: 0
+  _score: 0
+  CarriedItems: []
   sprintSpeed: 8
 --- !u!50 &2006371852
 Rigidbody2D:
@@ -3174,7 +3182,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2023165428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.860000014, y: -9, z: 0}
+  m_LocalPosition: {x: -8.06000042, y: -15.5799999, z: 0}
   m_LocalScale: {x: 2.4934268, y: 2.49342561, z: 2.49342561}
   m_Children: []
   m_Father: {fileID: 1436591938}
@@ -3411,12 +3419,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStunned: 0
+  isDead: 0
   controls: 0
   speed: 4
   inertiaFriction: .400000006
   powerUpAvailable: 1
   powerUpDuration: 0
   powerUpCooldown: 5000
+  RespawnTime: 2000
+  _score: 0
+  CarriedItems: []
   PoopPrefab: {fileID: 11425668, guid: 67c65282ec616f04fad0da4b5ecc5e22, type: 2}
 --- !u!1 &2102790956
 GameObject:

@@ -4,7 +4,13 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager GetInstance()
+    {
+        return GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
+
     public List<Player> Players;
+    Dictionary<CharacterType, PlayableCharacter> PlayersObjects;
 
     void Awake()
     {
@@ -16,14 +22,37 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
     }
 
+    void Start()
+    {
+        PlayersObjects = new Dictionary<CharacterType, PlayableCharacter>();
+        foreach (var player in new CharacterType[] { CharacterType.Bear, CharacterType.Eagle, CharacterType.Pig })
+        {
+            var go = GameObject.FindGameObjectWithTag(player.ToString());
+            if (go != null)
+                PlayersObjects.Add(player, go.GetComponent<PlayableCharacter>());
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
             Application.LoadLevel(Application.loadedLevel);
+
+        
     }
 
 	public void EndGame()
 	{
+		int bestScore = 0;
+		winnerIdx = 0;
+		foreach (Player player in PlayersObjects)
+		{
+			if (player.score >= bestScore)
+			{
+
+			}
+				EndGame(item.Value);
+		}
 		Debug.Log ("GAME IS FINISHED");
 	}
 
@@ -43,9 +72,37 @@ public class GameManager : MonoBehaviour
         {
             foreach (var player in Players)
             {
-
                 GameObject.FindGameObjectWithTag(player.characterType.ToString())
                     .GetComponent<PlayableCharacter>().controls = player.controls;
+            }
+        }
+        _endGame = false;
+    }
+
+    private bool _endGame;
+    private string _winnerName;
+
+    public void EndGame(PlayableCharacter winner)
+    {
+        _endGame = true;
+        _winnerName = winner.gameObject.name;
+    }
+
+    void OnGUI()
+    {
+        GUI.color = Color.black;
+        if (_endGame)
+        {
+            GUI.Label(new Rect(0, 0, 300, 200), new GUIContent("Match is over. " + _winnerName + " has won."), new GUIStyle() { fontSize = 20 });
+        }
+        else
+        {
+            int i = 0;
+            foreach (var player in PlayersObjects)
+            {
+                var character = player.Value;
+                GUI.Label(new Rect(0, 50 * i, 300, 200), new GUIContent(character.gameObject.name + " : " + character._score), new GUIStyle() { fontSize = 20 });
+                i++;
             }
         }
     }

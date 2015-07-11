@@ -8,23 +8,15 @@ public class Eagle : PlayableCharacter
     // cross walls when using ability
 
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     protected override IEnumerator StartPowerUp()
     {
-        gameObject.layer = 11;
-        //GetComponent<Collider2D>().la
+        gameObject.layer = 11; // crosses static walls
         yield return new WaitForSeconds(powerUpDuration / 1000f);
-        //GetComponent<Collider2D>().enabled = true;
-        gameObject.layer = 9;
+        gameObject.layer = 9; // dont cross static walls
     }
 
-    public void Pickup()
+    public void Pickup(Pickup item)
     {
-
+        CarriedItems.Add(item);
     }
 }
