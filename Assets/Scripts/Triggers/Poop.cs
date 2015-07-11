@@ -27,6 +27,7 @@ public class Poop : MonoBehaviour
         {
             // stun either 
             player.GetComponent<PlayableCharacter>().Stun(stunDuration);
+            Destroy(gameObject);
         }
     }
 

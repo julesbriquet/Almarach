@@ -16,9 +16,11 @@ public class Eagle : PlayableCharacter
 
     protected override IEnumerator StartPowerUp()
     {
-        GetComponent<Collider2D>().enabled = false;
+        gameObject.layer = 11;
+        //GetComponent<Collider2D>().la
         yield return new WaitForSeconds(powerUpDuration / 1000f);
-        GetComponent<Collider2D>().enabled = true;
+        //GetComponent<Collider2D>().enabled = true;
+        gameObject.layer = 9;
     }
 
     public void Pickup()
