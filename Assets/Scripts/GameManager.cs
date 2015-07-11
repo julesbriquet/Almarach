@@ -27,19 +27,15 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        PlayersObjects = new Dictionary<CharacterType, PlayableCharacter>();
-        foreach (var player in new CharacterType[] { CharacterType.Bear, CharacterType.Eagle, CharacterType.Pig })
-        {
-            var go = GameObject.FindGameObjectWithTag(player.ToString());
-            if (go != null)
-                PlayersObjects.Add(player, go.GetComponent<PlayableCharacter>());
-        }
+        InitPlayerObjects();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
+        {
             Application.LoadLevel(Application.loadedLevel);
+        }
 
         foreach (var item in PlayersObjects)
         {
@@ -56,6 +52,21 @@ public class GameManager : MonoBehaviour
     void OnLevelWasLoaded(int level)
     {
         InitializeSceneControls();
+        InitPlayerObjects();
+    }
+
+    void InitPlayerObjects()
+    {
+        if (PlayersObjects == null || PlayersObjects.Count == 0 || PlayersObjects.ContainsValue(null))
+        {
+            PlayersObjects = new Dictionary<CharacterType, PlayableCharacter>();
+            foreach (var player in new CharacterType[] { CharacterType.Bear, CharacterType.Eagle, CharacterType.Pig })
+            {
+                var go = GameObject.FindGameObjectWithTag(player.ToString());
+                if (go != null)
+                    PlayersObjects.Add(player, go.GetComponent<PlayableCharacter>());
+            }
+        }
     }
 
     void InitializeSceneControls()
