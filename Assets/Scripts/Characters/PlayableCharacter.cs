@@ -2,6 +2,13 @@ using UnityEngine;
 using System.Collections;
 
 
+public enum CharacterType
+{
+    Eagle,
+    Pig,
+    Bear
+}
+
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class PlayableCharacter : MonoBehaviour
 {
@@ -9,8 +16,7 @@ public abstract class PlayableCharacter : MonoBehaviour
 
     public bool isStunned;
 
-    [Tooltip("TODO TEMPORARY. ID FOR THE CONTROLS SCHEME")]
-    public int playerId;
+    public ControlScheme controls;
 
     public float speed;
     public float inertiaFriction;
@@ -32,7 +38,7 @@ public abstract class PlayableCharacter : MonoBehaviour
     {
         if (!isStunned)
         {
-            Vector2 direction = Controls.GetDirection(playerId);
+            Vector2 direction = Controls.GetDirection(controls);
             if (direction != Vector2.zero)
             {
                 _rb.velocity = Vector2.MoveTowards(_rb.velocity, direction * speed, 1);
@@ -42,7 +48,7 @@ public abstract class PlayableCharacter : MonoBehaviour
                 _rb.velocity = Vector2.MoveTowards(_rb.velocity, Vector2.zero, inertiaFriction);
             }
 
-            if (Controls.UsePowerUp(playerId) && powerUpAvailable)
+            if (Controls.UsePowerUp(controls) && powerUpAvailable)
                 StartCoroutine(UsePowerUp());
         }
     }
