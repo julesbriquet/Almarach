@@ -21,7 +21,7 @@ TagManager:
   - MapBounds
   - NoClip
   - StaticWalls
-  - 
+  - SafeArea
   - 
   - 
   - 
