@@ -9,13 +9,13 @@ public class Controls
 
         if (playerId == 0)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.Keypad5))
                 direction.y = 1;
-            else if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.Keypad2))
                 direction.y = -1;
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.Keypad1))
                 direction.x = -1;
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.Keypad3))
                 direction.x = 1;
         }
         else if (playerId == 1)
@@ -27,6 +27,17 @@ public class Controls
             if (Input.GetKey(KeyCode.Q))
                 direction.x = -1;
             else if (Input.GetKey(KeyCode.D))
+                direction.x = 1;
+        }
+        else if (playerId == 2)
+        {
+            if (Input.GetKey(KeyCode.O))
+                direction.y = 1;
+            else if (Input.GetKey(KeyCode.L))
+                direction.y = -1;
+            if (Input.GetKey(KeyCode.K))
+                direction.x = -1;
+            else if (Input.GetKey(KeyCode.M))
                 direction.x = 1;
         }
 
@@ -42,7 +53,12 @@ public class Controls
         }
         else if (playerId == 1)
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Tab))
+                return true;
+        }
+        else if (playerId == 2)
+        {
+            if (Input.GetKey(KeyCode.Return))
                 return true;
         }
         return false;

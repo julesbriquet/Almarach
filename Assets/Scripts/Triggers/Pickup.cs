@@ -25,6 +25,12 @@ public class Pickup : MonoBehaviour
                 }
                 break;
             case CollectibleType.Pig:
+                var pig = col.gameObject.GetComponent<Pig>();
+                if (pig != null)
+                {
+                    pig.Pickup();
+                    PickedUp();
+                }
                 break;
         }
     }

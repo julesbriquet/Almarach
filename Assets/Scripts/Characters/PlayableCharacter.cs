@@ -7,6 +7,8 @@ public abstract class PlayableCharacter : MonoBehaviour
 {
     Rigidbody2D _rb;
 
+    public bool isStunned;
+
     [Tooltip("TODO TEMPORARY. ID FOR THE CONTROLS SCHEME")]
     public int playerId;
 
@@ -28,18 +30,21 @@ public abstract class PlayableCharacter : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector2 direction = Controls.GetDirection(playerId);
-        if (direction != Vector2.zero)
+        if (!isStunned)
         {
-            _rb.velocity = Vector2.MoveTowards(_rb.velocity, direction * speed, 1);
-        }
-        else
-        {
-            _rb.velocity = Vector2.MoveTowards(_rb.velocity, Vector2.zero, inertiaFriction);
-        }
+            Vector2 direction = Controls.GetDirection(playerId);
+            if (direction != Vector2.zero)
+            {
+                _rb.velocity = Vector2.MoveTowards(_rb.velocity, direction * speed, 1);
+            }
+            else
+            {
+                _rb.velocity = Vector2.MoveTowards(_rb.velocity, Vector2.zero, inertiaFriction);
+            }
 
-        if (Controls.UsePowerUp(playerId) && powerUpAvailable)
-            StartCoroutine(UsePowerUp());
+            if (Controls.UsePowerUp(playerId) && powerUpAvailable)
+                StartCoroutine(UsePowerUp());
+        }
     }
 
     protected virtual IEnumerator StartPowerUp()
@@ -55,6 +60,21 @@ public abstract class PlayableCharacter : MonoBehaviour
         yield return new WaitForSeconds(powerUpCooldown / 1000f);
         powerUpAvailable = true;
         Debug.Log(gameObject.name + " powerup available again");
+    }
+
+    public void Stun(float duration)
+    {
+        StartCoroutine(DoStun(duration));
+    }
+
+    private IEnumerator DoStun(float duration)
+    {
+        Debug.Log(gameObject.name + " stunned !");
+        isStunned = true;
+        _rb.velocity = Vector2.zero;
+        yield return new WaitForSeconds(duration / 1000f);
+        isStunned = false;
+        Debug.Log(gameObject.name + " recovered.");
     }
 
     public void Die()
