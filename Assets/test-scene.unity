@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStunned: 0
-  controls: 2
+  controls: 1
   speed: 4
   inertiaFriction: .400000006
   powerUpAvailable: 1
