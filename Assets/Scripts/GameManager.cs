@@ -41,26 +41,28 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
             Application.LoadLevel(Application.loadedLevel);
 
-        foreach (var item in PlayersObjects)
-        {
-            if (item.Value._score >= MaxScore)
-                EndGame(item.Value);
-        }
     }
 
 	public void EndGame()
 	{
 		int bestScore = 0;
-		winnerIdx = 0;
-		foreach (Player player in PlayersObjects)
+		PlayableCharacter winner = PlayersObjects[CharacterType.Eagle];
+		bool draw = false;
+		foreach (var player in PlayersObjects)
 		{
-			if (player.score >= bestScore)
+			if (player.Value._score > bestScore)
 			{
-
+				winner = player.Value;
+				bestScore = player.Value._score;
 			}
-				EndGame(item.Value);
+			else if (player.Value._score == bestScore)
+			{
+				draw = true;
+			}
 		}
-		Debug.Log ("GAME IS FINISHED");
+
+		if (!draw)
+			EndGame(winner);
 	}
 
     public void ConfigureControls(List<Player> players)
@@ -91,6 +93,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame(PlayableCharacter winner)
     {
+		Debug.Log ("GAME IS FINISHED");
         _endGame = true;
         _winnerName = winner.gameObject.name;
     }

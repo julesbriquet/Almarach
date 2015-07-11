@@ -27,6 +27,7 @@ public class TimerUI : MonoBehaviour {
 			m_timerText.text = TimeToString ();
 		}
 		else {
+			m_timerText.text = "00:00:00";
 			gameManager.EndGame();
 		}
 	}
