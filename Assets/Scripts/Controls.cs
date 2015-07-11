@@ -89,13 +89,13 @@ public class Controls
     private static Vector2 GetJoystickAxis(int joystickId)
     {
         return new Vector2(
-            Input.GetAxis("joystick " + joystickId + " horizontal"), 
-            Input.GetAxis("joystick " + joystickId + " vertical"));
+            Input.GetAxis("Joystick" + joystickId + "_O"), 
+            Input.GetAxis("Joystick" + joystickId + "_V"));
     }
 
     private static bool GetJoystickButton(int joystickId)
     {
-        return Input.GetKey("joystick " + joystickId + " button 0");
+		return Input.GetButtonDown("Joystick" + joystickId + "_A");
     }
 
     //public static Vector2 GetDirection(int playerId)
