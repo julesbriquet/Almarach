@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &34091596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3041,7 +3041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a644f18f6b081e0499bba67590543d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_remainingTime: 180
+  m_remainingTime: 120
   m_timeElapsedSpeed: 1
   gameManager: {fileID: 34091596}
 --- !u!1 &1635661995
