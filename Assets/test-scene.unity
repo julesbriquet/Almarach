@@ -97,7 +97,7 @@ GameObject:
   - 4: {fileID: 1853702}
   - 212: {fileID: 1853704}
   - 61: {fileID: 1853703}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: test-red-50x70
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - 4: {fileID: 177302592}
   - 212: {fileID: 177302594}
   - 61: {fileID: 177302593}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x67
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   - 4: {fileID: 293672616}
   - 212: {fileID: 293672615}
   - 61: {fileID: 293672614}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - 4: {fileID: 310279239}
   - 212: {fileID: 310279241}
   - 61: {fileID: 310279240}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x54
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +575,7 @@ GameObject:
   - 4: {fileID: 327826270}
   - 212: {fileID: 327826272}
   - 61: {fileID: 327826271}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: test-red-50x72
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +643,7 @@ GameObject:
   - 4: {fileID: 434485752}
   - 212: {fileID: 434485754}
   - 61: {fileID: 434485753}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x55
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -711,7 +711,7 @@ GameObject:
   - 4: {fileID: 465451431}
   - 212: {fileID: 465451433}
   - 61: {fileID: 465451432}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -779,7 +779,7 @@ GameObject:
   - 4: {fileID: 480050936}
   - 212: {fileID: 480050938}
   - 61: {fileID: 480050937}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x66
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -847,7 +847,7 @@ GameObject:
   - 4: {fileID: 502110690}
   - 212: {fileID: 502110692}
   - 61: {fileID: 502110691}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x63
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1006,7 +1006,7 @@ MonoBehaviour:
   speed: 4
   inertiaFriction: .400000006
   powerUpAvailable: 1
-  powerUpDuration: 2000
+  powerUpDuration: 1000
   powerUpCooldown: 5000
 --- !u!1 &637358104
 GameObject:
@@ -1100,7 +1100,7 @@ GameObject:
   - 4: {fileID: 726354294}
   - 212: {fileID: 726354296}
   - 61: {fileID: 726354295}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x56
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1168,7 +1168,7 @@ GameObject:
   - 4: {fileID: 764576712}
   - 212: {fileID: 764576714}
   - 61: {fileID: 764576713}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x69
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1236,7 +1236,7 @@ GameObject:
   - 4: {fileID: 766736447}
   - 212: {fileID: 766736446}
   - 61: {fileID: 766736445}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1304,7 +1304,7 @@ GameObject:
   - 4: {fileID: 774489229}
   - 212: {fileID: 774489231}
   - 61: {fileID: 774489230}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x65
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1372,7 +1372,7 @@ GameObject:
   - 4: {fileID: 799102632}
   - 212: {fileID: 799102634}
   - 61: {fileID: 799102633}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: test-red-50x73
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1493,7 +1493,7 @@ GameObject:
   - 4: {fileID: 868217222}
   - 212: {fileID: 868217224}
   - 61: {fileID: 868217223}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x60
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1561,7 +1561,7 @@ GameObject:
   - 4: {fileID: 922825960}
   - 212: {fileID: 922825962}
   - 61: {fileID: 922825961}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x59
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1629,7 +1629,7 @@ GameObject:
   - 4: {fileID: 1027777549}
   - 212: {fileID: 1027777551}
   - 61: {fileID: 1027777550}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x68
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1697,7 +1697,7 @@ GameObject:
   - 4: {fileID: 1048753345}
   - 212: {fileID: 1048753347}
   - 61: {fileID: 1048753346}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x75
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1765,7 +1765,7 @@ GameObject:
   - 4: {fileID: 1049575449}
   - 212: {fileID: 1049575451}
   - 61: {fileID: 1049575450}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x74
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1833,7 +1833,7 @@ GameObject:
   - 4: {fileID: 1268290931}
   - 212: {fileID: 1268290933}
   - 61: {fileID: 1268290932}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x57
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2067,7 +2067,7 @@ GameObject:
   - 4: {fileID: 1357055801}
   - 212: {fileID: 1357055803}
   - 61: {fileID: 1357055802}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x64
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2135,7 +2135,7 @@ GameObject:
   - 4: {fileID: 1357702614}
   - 212: {fileID: 1357702616}
   - 61: {fileID: 1357702615}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: test-red-50x71
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2345,7 +2345,7 @@ GameObject:
   - 4: {fileID: 1473877715}
   - 212: {fileID: 1473877717}
   - 61: {fileID: 1473877716}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x62
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2413,7 +2413,7 @@ GameObject:
   - 4: {fileID: 1495702878}
   - 212: {fileID: 1495702880}
   - 61: {fileID: 1495702879}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x58
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2669,7 +2669,7 @@ GameObject:
   - 4: {fileID: 2030572516}
   - 212: {fileID: 2030572518}
   - 61: {fileID: 2030572517}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x61
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2841,7 +2841,7 @@ GameObject:
   - 4: {fileID: 2102790959}
   - 212: {fileID: 2102790958}
   - 61: {fileID: 2102790957}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: test-red-50x51
   m_TagString: Untagged
   m_Icon: {fileID: 0}

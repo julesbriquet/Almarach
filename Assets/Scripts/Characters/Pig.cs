@@ -13,6 +13,6 @@ public class Pig : PlayableCharacter
 
     public void Pickup()
     {
-
+        speed *= 0.7f;
     }
 }
