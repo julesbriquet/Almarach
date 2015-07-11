@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+
+    public int MaxScore;
+
     public static GameManager GetInstance()
     {
         return GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
@@ -38,7 +41,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
             Application.LoadLevel(Application.loadedLevel);
 
-        
+        foreach (var item in PlayersObjects)
+        {
+            if (item.Value._score >= MaxScore)
+                EndGame(item.Value);
+        }
     }
 
 	public void EndGame()
@@ -106,4 +113,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    
 }

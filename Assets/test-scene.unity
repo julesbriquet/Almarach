@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85056ed7bd2bca42941b19e2a2a1d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxScore: 6
 --- !u!4 &34091597
 Transform:
   m_ObjectHideFlags: 0
@@ -3041,7 +3042,7 @@ MonoBehaviour:
   isStunned: 0
   isDead: 0
   controls: 3
-  speed: 4
+  speed: 3
   inertiaFriction: .400000006
   powerUpAvailable: 1
   powerUpDuration: 1000
@@ -3049,7 +3050,7 @@ MonoBehaviour:
   RespawnTime: 0
   _score: 0
   CarriedItems: []
-  sprintSpeed: 8
+  sprintSpeed: 7
 --- !u!50 &2006371852
 Rigidbody2D:
   m_ObjectHideFlags: 0
