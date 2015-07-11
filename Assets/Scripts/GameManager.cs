@@ -2,36 +2,31 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class GameManager
+public class GameManager : MonoBehaviour
 {
-    #region Singleton
-
-    private static GameManager _instance;
-
-    private GameManager()
-    {
-        //Initialize();
-    }
-
-    public static GameManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new GameManager();
-            }
-            return _instance;
-        }
-    }
-
-    #endregion
-
     public List<Player> Players;
 
-    public void Reset()
+    void Awake()
     {
-
+        DontDestroyOnLoad(transform.gameObject);
     }
 
+    public void ConfigureControls(List<Player> players)
+    {
+        Players = players;
+    }
+
+    void OnLevelWasLoaded(int level)
+    {
+        InitializeSceneControls();
+    }
+
+    void InitializeSceneControls()
+    {
+        foreach (var player in Players)
+        {
+            GameObject.FindGameObjectWithTag(player.characterType.ToString())
+                .GetComponent<PlayableCharacter>().controls = player.controls;
+        }
+    }
 }
