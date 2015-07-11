@@ -335,7 +335,7 @@ GameObject:
   - 114: {fileID: 510537337}
   m_Layer: 9
   m_Name: eagle
-  m_TagString: Untagged
+  m_TagString: Eagle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -919,7 +919,7 @@ GameObject:
   - 114: {fileID: 2006371851}
   m_Layer: 8
   m_Name: bear
-  m_TagString: Untagged
+  m_TagString: Bear
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1108,7 +1108,7 @@ GameObject:
   - 114: {fileID: 2099807109}
   m_Layer: 9
   m_Name: pig
-  m_TagString: Untagged
+  m_TagString: Pig
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
