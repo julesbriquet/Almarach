@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -33,6 +34,7 @@ public abstract class PlayableCharacter : MonoBehaviour
     public float RespawnTime;
 
     public int _score;
+    public GameObject scoreCount;
 
     public List<Pickup> CarriedItems;
 
@@ -108,6 +110,7 @@ public abstract class PlayableCharacter : MonoBehaviour
     public void Score()
     {
         _score++;
+        scoreCount.GetComponent<Text>().text = _score.ToString();
         ReplaceAllItems();
     }
 
