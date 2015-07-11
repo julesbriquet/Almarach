@@ -129,7 +129,7 @@ public abstract class PlayableCharacter : MonoBehaviour
         isDead = false;
     }
 
-    private void ReplaceAllItems()
+    protected virtual void ReplaceAllItems()
     {
         foreach (var item in CarriedItems)
         {

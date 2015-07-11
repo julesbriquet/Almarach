@@ -29,6 +29,12 @@ public class Pig : PlayableCharacter
         speed = _initialSpeed;
     }
 
+    protected override void ReplaceAllItems()
+    {
+      base.ReplaceAllItems();
+      speed = _initialSpeed;
+    }
+
     public void Pickup(Pickup item)
     {
         CarriedItems.Add(item);
