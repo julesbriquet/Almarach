@@ -68,7 +68,7 @@ public class ControlsSelection : MonoBehaviour
     {
         // change selected character
         ChooseCharacter(scheme, leftRight);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         _listenDirection[scheme] = true;
     }
 
@@ -86,7 +86,7 @@ public class ControlsSelection : MonoBehaviour
             if (players.Count < 3)
                 CheckInPlayer(scheme);
         }
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         _listenValidate[scheme] = true;
     }
 
