@@ -41,7 +41,8 @@ public abstract class PlayableCharacter : MonoBehaviour
             Vector2 direction = Controls.GetDirection(controls);
             if (direction != Vector2.zero)
             {
-                _rb.velocity = Vector2.MoveTowards(_rb.velocity, direction * speed, 1);
+				direction *= speed;
+                _rb.velocity = Vector2.MoveTowards(_rb.velocity, direction.normalized, 1);
             }
             else
             {
