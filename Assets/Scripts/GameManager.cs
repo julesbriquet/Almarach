@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
             foreach (var player in PlayersObjects)
             {
                 var character = player.Value;
-                GUI.Label(new Rect(0, 50 * i, 300, 200), new GUIContent(character.gameObject.name + " : " + character._score), new GUIStyle() { fontSize = 20 });
+                GUI.Label(new Rect(100 + 300 * i, Screen.height - 35, 300, 30), new GUIContent(character.gameObject.name + " : " + character._score), new GUIStyle() { fontSize = 20 });
                 i++;
             }
         }
