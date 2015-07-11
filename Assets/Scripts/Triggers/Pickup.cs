@@ -20,7 +20,7 @@ public class Pickup : MonoBehaviour
                 var eagle = col.gameObject.GetComponent<Eagle>();
                 if (eagle != null)
                 {
-                    eagle.Pickup();
+                    eagle.Pickup(this);
                     PickedUp();
                 }
                 break;
@@ -28,11 +28,16 @@ public class Pickup : MonoBehaviour
                 var pig = col.gameObject.GetComponent<Pig>();
                 if (pig != null)
                 {
-                    pig.Pickup();
+                    pig.Pickup(this);
                     PickedUp();
                 }
                 break;
         }
+    }
+
+    public void Respawn()
+    {
+        gameObject.SetActive(true);
     }
 
     private void PickedUp()

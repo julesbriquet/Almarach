@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     }
 
     public List<Player> Players;
+    Dictionary<CharacterType, PlayableCharacter> PlayersObjects;
 
     void Awake()
     {
@@ -21,10 +22,27 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
     }
 
+    void Start()
+    {
+        PlayersObjects = new Dictionary<CharacterType, PlayableCharacter>();
+        foreach (var player in new CharacterType[] { CharacterType.Bear, CharacterType.Eagle, CharacterType.Pig })
+        {
+            var go = GameObject.FindGameObjectWithTag(player.ToString());
+            if (go != null)
+                PlayersObjects.Add(player, go.GetComponent<PlayableCharacter>());
+        }
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
             Application.LoadLevel(Application.loadedLevel);
+
+        foreach (var item in PlayersObjects)
+        {
+            if (item.Value._score >= 2)
+                EndGame(item.Value);
+        }
     }
 
     public void ConfigureControls(List<Player> players)
@@ -60,10 +78,20 @@ public class GameManager : MonoBehaviour
 
     void OnGUI()
     {
+        GUI.color = Color.black;
         if (_endGame)
         {
-            GUI.color = Color.black;
             GUI.Label(new Rect(0, 0, 300, 200), new GUIContent("Match is over. " + _winnerName + " has won."), new GUIStyle() { fontSize = 20 });
+        }
+        else
+        {
+            int i = 0;
+            foreach (var player in PlayersObjects)
+            {
+                var character = player.Value;
+                GUI.Label(new Rect(0, 50 * i, 300, 200), new GUIContent(character.gameObject.name + " : " + character._score), new GUIStyle() { fontSize = 20 });
+                i++;
+            }
         }
     }
 }

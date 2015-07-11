@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public enum CharacterType
@@ -15,6 +16,7 @@ public abstract class PlayableCharacter : MonoBehaviour
     Rigidbody2D _rb;
 
     public bool isStunned;
+    public bool isDead;
 
     public ControlScheme controls;
 
@@ -26,22 +28,30 @@ public abstract class PlayableCharacter : MonoBehaviour
     public float powerUpDuration;
     [Tooltip("Time for powerup to reload in milliseconds")]
     public float powerUpCooldown;
+    [Tooltip("Respawn delay in milliseconds")]
+    public float RespawnTime;
+
+    public int _score;
+
+    public List<Pickup> CarriedItems;
 
     // Use this for initialization
-    void Start()
+    Vector2 _startPos;
+    protected virtual void Start()
     {
+        _startPos = transform.position;
+        CarriedItems = new List<Pickup>();
         _rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isStunned)
-        {
+        //if (!isStunned)
+        //{
             Vector2 direction = Controls.GetDirection(controls);
-            if (direction != Vector2.zero)
+            if (!isDead && !isStunned && direction != Vector2.zero)
             {
-                //Debug.Log ("Dir " + direction.normalized * speed);
                 _rb.velocity = Vector2.MoveTowards(_rb.velocity, direction.normalized * speed, 1);
             }
             else
@@ -49,9 +59,13 @@ public abstract class PlayableCharacter : MonoBehaviour
                 _rb.velocity = Vector2.MoveTowards(_rb.velocity, Vector2.zero, inertiaFriction);
             }
 
-            if (Controls.UsePowerUp(controls) && powerUpAvailable)
+            if (!isDead && !isStunned && Controls.UsePowerUp(controls) && powerUpAvailable)
                 StartCoroutine(UsePowerUp());
-        }
+        //}
+        //else
+        //{
+
+        //}
     }
 
     protected virtual IEnumerator StartPowerUp()
@@ -84,8 +98,36 @@ public abstract class PlayableCharacter : MonoBehaviour
         Debug.Log(gameObject.name + " recovered.");
     }
 
-    public void Die()
+    public void Score()
     {
-        gameObject.SetActive(false);
+        _score++;
+        ReplaceAllItems();
+    }
+
+    public virtual void Die()
+    {
+        if (!isDead)
+            StartCoroutine(Respawn());
+    }
+
+    protected virtual IEnumerator Respawn()
+    {
+        isDead = true;
+
+        yield return new WaitForSeconds(RespawnTime / 1000f);
+        ReplaceAllItems();
+        
+        transform.position = _startPos;
+
+        isDead = false;
+    }
+
+    private void ReplaceAllItems()
+    {
+        foreach (var item in CarriedItems)
+        {
+            item.gameObject.SetActive(true);
+        }
+        CarriedItems.Clear();
     }
 }

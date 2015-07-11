@@ -3,20 +3,21 @@ using System.Collections;
 
 public class BearKillTrigger : MonoBehaviour
 {
-    private float _killCount;
+    //private float _killCount;
 
     void OnTriggerEnter2D(Collider2D col)
     {
         var prey = col.GetComponent<PlayableCharacter>();
-        if (prey != null)
+        if (prey != null && !prey.isDead)
         {
             prey.Die();
-            _killCount++;
+            GetComponentInParent<Bear>().Score();
+            //_killCount++;
 
-            if (_killCount == 2)
-            {
-                GameManager.GetInstance().EndGame(GetComponentInParent<PlayableCharacter>());
-            }
+            //if (_killCount == 2)
+            //{
+            //    GameManager.GetInstance().EndGame(GetComponentInParent<PlayableCharacter>());
+            //}
         }
     }
 }
