@@ -10,6 +10,7 @@ public enum CharacterType
     Bear
 }
 
+[RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class PlayableCharacter : MonoBehaviour
 {
@@ -35,6 +36,10 @@ public abstract class PlayableCharacter : MonoBehaviour
 
     public List<Pickup> CarriedItems;
 
+    public AudioClip stunSound;
+
+    protected AudioSource _audioSource;
+
     // Use this for initialization
     Vector2 _startPos;
     protected virtual void Start()
@@ -42,6 +47,7 @@ public abstract class PlayableCharacter : MonoBehaviour
         _startPos = transform.position;
         CarriedItems = new List<Pickup>();
         _rb = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -93,6 +99,7 @@ public abstract class PlayableCharacter : MonoBehaviour
         Debug.Log(gameObject.name + " stunned !");
         isStunned = true;
         _rb.velocity = Vector2.zero;
+        _audioSource.PlayOneShot(stunSound);
         yield return new WaitForSeconds(duration / 1000f);
         isStunned = false;
         Debug.Log(gameObject.name + " recovered.");

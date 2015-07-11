@@ -4,6 +4,9 @@ using System.Collections;
 public class Pig : PlayableCharacter
 {
     public Poop PoopPrefab;
+    [Header("Sounds")]
+    public AudioClip poopSound;
+    public AudioClip pickupSound;
 
     private float _initialSpeed;
 
@@ -16,6 +19,7 @@ public class Pig : PlayableCharacter
     protected override IEnumerator StartPowerUp()
     {
         Instantiate(PoopPrefab, transform.position, Quaternion.identity);
+        _audioSource.PlayOneShot(poopSound);
         yield break;
     }
 
@@ -29,5 +33,6 @@ public class Pig : PlayableCharacter
     {
         CarriedItems.Add(item);
         speed *= 0.8f;
+        _audioSource.PlayOneShot(pickupSound);
     }
 }

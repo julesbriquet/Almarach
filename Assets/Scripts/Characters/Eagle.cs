@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Eagle : PlayableCharacter
 {
+    [Header("Sounds")]
+    public AudioClip flySound;
+    public AudioClip pickupSound;
     // Eagle can :
     // pickup stuff
     // cross walls when using ability
@@ -11,6 +14,7 @@ public class Eagle : PlayableCharacter
     protected override IEnumerator StartPowerUp()
     {
         gameObject.layer = 11; // crosses static walls
+        _audioSource.PlayOneShot(flySound);
         yield return new WaitForSeconds(powerUpDuration / 1000f);
         gameObject.layer = 9; // dont cross static walls
     }
@@ -18,5 +22,6 @@ public class Eagle : PlayableCharacter
     public void Pickup(Pickup item)
     {
         CarriedItems.Add(item);
+        _audioSource.PlayOneShot(pickupSound);
     }
 }
