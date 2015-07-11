@@ -8,7 +8,18 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        if (GameObject.FindGameObjectsWithTag("GameController").Length == 2)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         DontDestroyOnLoad(transform.gameObject);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+            Application.LoadLevel(Application.loadedLevel);
     }
 
     public void ConfigureControls(List<Player> players)
@@ -23,10 +34,14 @@ public class GameManager : MonoBehaviour
 
     void InitializeSceneControls()
     {
-        foreach (var player in Players)
+        if (Players != null)
         {
-            GameObject.FindGameObjectWithTag(player.characterType.ToString())
-                .GetComponent<PlayableCharacter>().controls = player.controls;
+            foreach (var player in Players)
+            {
+
+                GameObject.FindGameObjectWithTag(player.characterType.ToString())
+                    .GetComponent<PlayableCharacter>().controls = player.controls;
+            }
         }
     }
 }
