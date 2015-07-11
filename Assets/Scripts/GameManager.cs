@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
             Application.LoadLevel(Application.loadedLevel);
     }
 
+	public void EndGame()
+	{
+		Debug.Log ("GAME IS FINISHED");
+	}
+
     public void ConfigureControls(List<Player> players)
     {
         Players = players;
