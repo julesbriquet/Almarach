@@ -15,7 +15,7 @@ public class BearKillTrigger : MonoBehaviour
 
             if (_killCount == 2)
             {
-                Debug.Log("bear has won.");
+                GameManager.GetInstance().EndGame(GetComponentInParent<PlayableCharacter>());
             }
         }
     }
