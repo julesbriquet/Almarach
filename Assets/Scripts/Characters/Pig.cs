@@ -38,7 +38,7 @@ public class Pig : PlayableCharacter
     public void Pickup(Pickup item)
     {
         CarriedItems.Add(item);
-        speed *= 0.8f;
+        speed *= 0.7f;
         _audioSource.PlayOneShot(pickupSound);
     }
 }

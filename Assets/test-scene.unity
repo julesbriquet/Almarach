@@ -251,10 +251,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85056ed7bd2bca42941b19e2a2a1d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endGameUI: {fileID: 1688006519}
   bearWinSound: {fileID: 8300000, guid: ddb0ff472bec54046bf5f69639baba12, type: 3}
   eagleWinSound: {fileID: 8300000, guid: 4ee3e90b0fac24e1f8d1378ce077ab9f, type: 3}
   pigWinSound: {fileID: 8300000, guid: 80d504a8a78b24f999ddad8abe410996, type: 3}
+  inGameMusic: {fileID: 0}
+  menuMusic: {fileID: 0}
 --- !u!4 &34091597
 Transform:
   m_ObjectHideFlags: 0
@@ -1244,6 +1245,10 @@ Prefab:
       propertyPath: respawnSound
       value: 
       objectReference: {fileID: 8300000, guid: e7cb883e1fa76a448a070d2e6cfc9d4c, type: 3}
+    - target: {fileID: 11416748, guid: f69345ab01b30b54cbcb522069b5c0fe, type: 2}
+      propertyPath: poopSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 941a80c312585b1418c12f3047306707, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f69345ab01b30b54cbcb522069b5c0fe, type: 2}
   m_IsPrefabParent: 0
@@ -7713,6 +7718,14 @@ Prefab:
       propertyPath: respawnSound
       value: 
       objectReference: {fileID: 8300000, guid: e7cb883e1fa76a448a070d2e6cfc9d4c, type: 3}
+    - target: {fileID: 11487346, guid: 80d4bc0ea7425bd4d9531c8d796440ed, type: 2}
+      propertyPath: powerUpCooldown
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11487346, guid: 80d4bc0ea7425bd4d9531c8d796440ed, type: 2}
+      propertyPath: stunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a903891304004294ba7a4ead6cb02ae7, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80d4bc0ea7425bd4d9531c8d796440ed, type: 2}
   m_IsPrefabParent: 0

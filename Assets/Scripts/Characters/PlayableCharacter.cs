@@ -143,7 +143,10 @@ public abstract class PlayableCharacter : MonoBehaviour
 	
 	public void Score()
 	{
-		_score++;
+        if (this is Eagle)
+            _score += 2;
+        else
+		    _score++;
 		scoreCount.GetComponent<Text>().text = _score.ToString();
         ReplaceAllItems();
     }

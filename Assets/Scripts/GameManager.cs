@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public AudioClip bearWinSound;
     public AudioClip eagleWinSound;
     public AudioClip pigWinSound;
+    public AudioClip inGameMusic;
+    public AudioClip menuMusic;
     Dictionary<CharacterType, PlayableCharacter> PlayersObjects;
     AudioSource _audioSource;
 
@@ -24,6 +26,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
             return;
+        }
+        else
+        {
+            GetComponent<AudioSource>().clip = menuMusic;
+            GetComponent<AudioSource>().Play();
         }
         DontDestroyOnLoad(transform.gameObject);
     }
@@ -75,6 +82,13 @@ public class GameManager : MonoBehaviour
 
     void OnLevelWasLoaded(int level)
     {
+        GetComponent<AudioSource>().Stop();
+        if (level == 1)
+            GetComponent<AudioSource>().clip = inGameMusic;
+        else
+            GetComponent<AudioSource>().clip = menuMusic;
+        GetComponent<AudioSource>().Play();
+
         InitializeSceneControls();
         InitPlayerObjects();
     }
