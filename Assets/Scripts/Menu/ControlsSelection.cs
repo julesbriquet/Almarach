@@ -8,6 +8,8 @@ public class ControlsSelection : MonoBehaviour
     List<Player> players;
 
     public Transform[] playerOverlays;
+    public Transform[] disneyAnimalSprites;
+    public Transform[] animalSprites;
     public Transform[] playerKeyMappings;
     public Transform[] playerGamepadMappings;
 
@@ -101,6 +103,8 @@ public class ControlsSelection : MonoBehaviour
             if (!players.Any(p => p.characterType == GetFocusedCharacter(scheme)))
             {
                 CharacterType characterType = GetFocusedCharacter(scheme);
+                disneyAnimalSprites[GetAnimalIndex(characterType)].gameObject.SetActive(false);
+                animalSprites[GetAnimalIndex(characterType)].gameObject.SetActive(true);
                 player.characterType = characterType;
                 _audioSource.PlayOneShot(GetCharacterSound(characterType));
             }
@@ -180,4 +184,16 @@ public class ControlsSelection : MonoBehaviour
             return pigSound;
         }
     }
+
+    int GetAnimalIndex(CharacterType type)
+    {
+        switch (type)
+        {
+            case CharacterType.Eagle: return 0;
+            case CharacterType.Pig: return 1;
+            case CharacterType.Bear: return 2;
+        }
+        return -1;
+    }
+
 }
