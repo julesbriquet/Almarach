@@ -6,15 +6,18 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
 
-    public GameObject endGameUI;
-
     public static GameManager GetInstance()
     {
         return GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     public List<Player> Players;
+    public GameObject endGameUI;
+    public AudioClip bearWinSound;
+    public AudioClip eagleWinSound;
+    public AudioClip pigWinSound;
     Dictionary<CharacterType, PlayableCharacter> PlayersObjects;
+    AudioSource _audioSource;
 
     void Awake()
     {
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         InitPlayerObjects();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -41,7 +45,7 @@ public class GameManager : MonoBehaviour
 
 	public void EndGame()
 	{
-        if (_endGame)
+        if (!_endGame)
         {
             int bestScore = 0;
             PlayableCharacter winner = PlayersObjects[CharacterType.Eagle];
@@ -103,39 +107,35 @@ public class GameManager : MonoBehaviour
         _endGame = false;
     }
 
-    private bool _endGame;
-    private string _winnerName;
+    private bool _endGame = false;
 
     public void EndGame(PlayableCharacter winner)
     {
-        Debug.Log("GAME IS FINISHED");
         _endGame = true;
-        _winnerName = winner.gameObject.name;
         StartCoroutine(EndGameScreen(winner));
     }
 
     IEnumerator EndGameScreen(PlayableCharacter winner)
     {
         Controls.controlsEnabled = false;
-        endGameUI.SetActive(true);
         if (winner is Bear)
-            endGameUI.transform.Find("EndGameBear").gameObject.SetActive(true);
+        {
+            endGameUI.transform.FindChild("EndBear").GetComponent<Image>().enabled = true;
+            _audioSource.PlayOneShot(bearWinSound);
+        }
         else if (winner is Eagle)
-            endGameUI.transform.Find("EndGameEagle").gameObject.SetActive(true);
+        {
+            endGameUI.transform.FindChild("EndEagle").GetComponent<Image>().enabled = true;
+            _audioSource.PlayOneShot(eagleWinSound);
+        }
         else
-            endGameUI.transform.Find("EndGamePig").gameObject.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        {
+            endGameUI.transform.FindChild("EndPig").GetComponent<Image>().enabled = true;
+            _audioSource.PlayOneShot(pigWinSound);
+        }
+        yield return new WaitForSeconds(4f);
         Controls.controlsEnabled = true;
         Application.LoadLevel(0);
-    }
-
-    void OnGUI()
-    {
-        GUI.color = Color.black;
-        if (_endGame)
-        {
-            GUI.Label(new Rect(0, 0, 300, 200), new GUIContent("Match is over. " + _winnerName + " has won."), new GUIStyle() { fontSize = 20 });
-        }
     }
     
 }
