@@ -25,7 +25,7 @@ public class ControlsSelection : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        players = new List<Player>();
+        _audioSource = GetComponent<AudioSource>();
         _listenDirection = new Dictionary<ControlScheme, bool>();
         _listenValidate = new Dictionary<ControlScheme, bool>();
         foreach (var scheme in new ControlScheme[]{ 
@@ -35,8 +35,9 @@ public class ControlsSelection : MonoBehaviour
             _listenDirection.Add(scheme, true);
             _listenValidate.Add(scheme, true);
         }
-        _audioSource = GetComponent<AudioSource>();
+        ResetPlayersChoices();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -44,8 +45,7 @@ public class ControlsSelection : MonoBehaviour
         if (players.Count == 3 && players.All(p => p.characterType.HasValue))
         {
             // proceed to scene
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().ConfigureControls(players);
-            Application.LoadLevel("test-scene");
+            StartCoroutine(GoToGame());
         }
 
         foreach (var scheme in new ControlScheme[]{ 
@@ -71,6 +71,18 @@ public class ControlsSelection : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ResetPlayersChoices()
+    {
+        players = new List<Player>();
+    }
+
+    IEnumerator GoToGame()
+    {
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().ConfigureControls(players);
+        yield return new WaitForSeconds(2); // finish last player selection sound
+        Application.LoadLevel("test-scene");
     }
 
     IEnumerator SetDirection(ControlScheme scheme, float leftRight)
