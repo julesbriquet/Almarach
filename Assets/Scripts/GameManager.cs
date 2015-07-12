@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
 
-    public int MaxScore;
+    public GameObject endGameUI;
 
     public static GameManager GetInstance()
     {
@@ -40,24 +41,28 @@ public class GameManager : MonoBehaviour
 
 	public void EndGame()
 	{
-		int bestScore = 0;
-		PlayableCharacter winner = PlayersObjects[CharacterType.Eagle];
-		bool draw = false;
-		foreach (var player in PlayersObjects)
-		{
-			if (player.Value._score > bestScore)
-			{
-				winner = player.Value;
-				bestScore = player.Value._score;
-			}
-			else if (player.Value._score == bestScore)
-			{
-				draw = true;
-			}
-		}
+        if (_endGame)
+        {
+            int bestScore = 0;
+            PlayableCharacter winner = PlayersObjects[CharacterType.Eagle];
+            bool draw = false;
+            foreach (var player in PlayersObjects)
+            {
+                if (player.Value._score > bestScore)
+                {
+                    winner = player.Value;
+                    bestScore = player.Value._score;
+                    draw = false;
+                }
+                else if (player.Value._score == bestScore)
+                {
+                    draw = true;
+                }
+            }
 
-		if (!draw)
-			EndGame(winner);
+            if (!draw)
+                EndGame(winner);
+        }
 	}
 
     public void ConfigureControls(List<Player> players)
@@ -103,9 +108,25 @@ public class GameManager : MonoBehaviour
 
     public void EndGame(PlayableCharacter winner)
     {
-		Debug.Log ("GAME IS FINISHED");
+        Debug.Log("GAME IS FINISHED");
         _endGame = true;
         _winnerName = winner.gameObject.name;
+        StartCoroutine(EndGameScreen(winner));
+    }
+
+    IEnumerator EndGameScreen(PlayableCharacter winner)
+    {
+        Controls.controlsEnabled = false;
+        endGameUI.SetActive(true);
+        if (winner is Bear)
+            endGameUI.transform.Find("EndGameBear").gameObject.SetActive(true);
+        else if (winner is Eagle)
+            endGameUI.transform.Find("EndGameEagle").gameObject.SetActive(true);
+        else
+            endGameUI.transform.Find("EndGamePig").gameObject.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        Controls.controlsEnabled = true;
+        Application.LoadLevel(0);
     }
 
     void OnGUI()

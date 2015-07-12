@@ -1,18 +1,19 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using System;
 
 public class TimerUI : MonoBehaviour {
-	
+
+    private GameManager m_gameManager;
 	private Text m_timerText;
 	public float m_remainingTime;
 	public int m_timeElapsedSpeed = 1;
-	public GameManager gameManager;
 	
 	// Use this for initialization
 	void Start () {
 		m_timerText = GetComponent<Text> ();
+        m_gameManager = GameManager.GetInstance();
 	}
 	
 	// Update is called once per frame
@@ -28,7 +29,7 @@ public class TimerUI : MonoBehaviour {
 		}
 		else {
 			m_timerText.text = "00:00:00";
-			gameManager.EndGame();
+			m_gameManager.EndGame();
 		}
 	}
 	

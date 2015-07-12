@@ -13,9 +13,14 @@ public enum ControlScheme
 
 public class Controls
 {
+    [HideInInspector]
+    public static bool controlsEnabled = true;
 
     public static Vector2 GetDirection(ControlScheme controlScheme)
     {
+        if (!controlsEnabled)
+            return Vector2.zero;
+
         Vector2 direction = Vector2.zero;
 
         switch (controlScheme)
@@ -68,6 +73,9 @@ public class Controls
 
     public static bool UsePowerUp(ControlScheme controlScheme)
     {
+        if (!controlsEnabled)
+            return false;
+
         switch (controlScheme)
         {
             case ControlScheme.KeyboardZQSD:
