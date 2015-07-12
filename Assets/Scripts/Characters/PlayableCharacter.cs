@@ -50,6 +50,8 @@ public abstract class PlayableCharacter : MonoBehaviour
     public ParticleSystem RespawnEffect;
     private ParticleSystem _respawnEffect;
 
+	public AudioClip respawnSound;
+
     // Use this for initialization
     Vector2 _startPos;
     protected virtual void Start()
@@ -167,6 +169,8 @@ public abstract class PlayableCharacter : MonoBehaviour
         //_respawnEffect.Play();
 
         isDead = false;
+		
+		_audioSource.PlayOneShot (respawnSound);
     }
 
     protected virtual void ReplaceAllItems()

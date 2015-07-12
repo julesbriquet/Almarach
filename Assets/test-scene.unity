@@ -1240,6 +1240,10 @@ Prefab:
       value: 
       objectReference: {fileID: 19803996, guid: f3a6526c6d74d0d49b221256bfec1791,
         type: 2}
+    - target: {fileID: 11416748, guid: f69345ab01b30b54cbcb522069b5c0fe, type: 2}
+      propertyPath: respawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e7cb883e1fa76a448a070d2e6cfc9d4c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f69345ab01b30b54cbcb522069b5c0fe, type: 2}
   m_IsPrefabParent: 0
@@ -4004,6 +4008,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11440036, guid: 5a7cae61283872249ac8e6ac6cd8a6c8, type: 2}
+      propertyPath: respawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e7cb883e1fa76a448a070d2e6cfc9d4c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a7cae61283872249ac8e6ac6cd8a6c8, type: 2}
   m_IsPrefabParent: 0
@@ -7701,6 +7709,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11487346, guid: 80d4bc0ea7425bd4d9531c8d796440ed, type: 2}
+      propertyPath: respawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e7cb883e1fa76a448a070d2e6cfc9d4c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80d4bc0ea7425bd4d9531c8d796440ed, type: 2}
   m_IsPrefabParent: 0
