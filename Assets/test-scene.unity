@@ -795,7 +795,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 405638, guid: 6b69dc3a41c044944b473815fa876d00, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -7.91366959
+      value: -7.96467018
       objectReference: {fileID: 0}
     - target: {fileID: 405638, guid: 6b69dc3a41c044944b473815fa876d00, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1223,6 +1223,11 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 11416748, guid: f69345ab01b30b54cbcb522069b5c0fe, type: 2}
+      propertyPath: RespawnEffect
+      value: 
+      objectReference: {fileID: 19803996, guid: ee0f31992518e31459119418c9f2b179,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f69345ab01b30b54cbcb522069b5c0fe, type: 2}
   m_IsPrefabParent: 0
@@ -3628,6 +3633,11 @@ Prefab:
       propertyPath: m_Name
       value: eagle
       objectReference: {fileID: 0}
+    - target: {fileID: 11440036, guid: 5a7cae61283872249ac8e6ac6cd8a6c8, type: 2}
+      propertyPath: RespawnEffect
+      value: 
+      objectReference: {fileID: 19803996, guid: ee0f31992518e31459119418c9f2b179,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a7cae61283872249ac8e6ac6cd8a6c8, type: 2}
   m_IsPrefabParent: 0
@@ -6737,6 +6747,11 @@ Prefab:
       propertyPath: TrailFrequency
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 11487346, guid: 80d4bc0ea7425bd4d9531c8d796440ed, type: 2}
+      propertyPath: RespawnEffect
+      value: 
+      objectReference: {fileID: 19803996, guid: ee0f31992518e31459119418c9f2b179,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 80d4bc0ea7425bd4d9531c8d796440ed, type: 2}
   m_IsPrefabParent: 0

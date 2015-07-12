@@ -18,6 +18,5 @@ public class EndZone : MonoBehaviour
 	    }
         // all collectibles are gathered: game is won.
         CharacterThatTriggers.Score();
-        //GameManager.GetInstance().EndGame(CharacterThatTriggers);
     }
 }

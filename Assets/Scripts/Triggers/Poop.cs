@@ -9,17 +9,26 @@ public class Poop : MonoBehaviour
     [Tooltip("delay until the poop disappears in milliseconds")]
     public float duration;
 
+    public Sprite[] Frames;
+    public float FrameDuration;
+
     // Use this for initialization
     void Start()
     {
         Destroy(this.gameObject, duration / 1000f);
+        StartCoroutine(Animate());
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-
-    //}
+    IEnumerator Animate()
+    {
+        var renderer = GetComponent<SpriteRenderer>();
+        int nextFrame = 0;
+        while (true)
+        {
+            renderer.sprite = Frames[++nextFrame % Frames.Length];
+            yield return new WaitForSeconds(FrameDuration / 1000f);
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D player)
     {
@@ -31,9 +40,9 @@ public class Poop : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, GetComponent<CircleCollider2D>().radius * 0.8f);
-    }
+    //void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(transform.position, GetComponent<CircleCollider2D>().radius * 0.8f);
+    //}
 }

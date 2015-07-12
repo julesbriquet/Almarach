@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adaa003cc038c4d9aa6eac107f718dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: -.600000024, z: 0}
+  offset: {x: 0, y: -.5, z: 0}
   period: 2
   lerpRate: .699999988
 --- !u!212 &21287582

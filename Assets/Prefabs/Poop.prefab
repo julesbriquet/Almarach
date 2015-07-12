@@ -56,6 +56,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stunDuration: 2000
   duration: 5000
+  Frames:
+  - {fileID: 21300000, guid: d4f3eb4d5ebf5cc4aaf9dcdf073ae107, type: 3}
+  - {fileID: 21300000, guid: 1785ee1d9fbe6184faacae41cfafc6b4, type: 3}
+  FrameDuration: 1000
 --- !u!212 &21215260
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -80,7 +84,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d34519892593a4742b76de0a930b9cb9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4f3eb4d5ebf5cc4aaf9dcdf073ae107, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

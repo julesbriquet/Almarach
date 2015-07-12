@@ -44,6 +44,9 @@ public abstract class PlayableCharacter : MonoBehaviour
     protected AudioSource _audioSource;
     protected Animator _animator;
 
+    public ParticleSystem RespawnEffect;
+    private ParticleSystem _respawnEffect;
+
     // Use this for initialization
     Vector2 _startPos;
     protected virtual void Start()
@@ -53,6 +56,7 @@ public abstract class PlayableCharacter : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
         _animator = GetComponent<Animator>();
+        _respawnEffect = (ParticleSystem)Instantiate(RespawnEffect, transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -134,6 +138,7 @@ public abstract class PlayableCharacter : MonoBehaviour
         ReplaceAllItems();
         
         transform.position = _startPos;
+        _respawnEffect.Play();
 
         isDead = false;
     }
