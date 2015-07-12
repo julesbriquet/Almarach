@@ -31,6 +31,9 @@ public abstract class PlayableCharacter : MonoBehaviour
     public float powerUpDuration;
     [Tooltip("Time for powerup to reload in milliseconds")]
     public float powerUpCooldown;
+
+	public float remainingTime;
+
     [Tooltip("Respawn delay in milliseconds")]
     public float RespawnTime;
 
@@ -51,6 +54,7 @@ public abstract class PlayableCharacter : MonoBehaviour
     Vector2 _startPos;
     protected virtual void Start()
     {
+		remainingTime = powerUpCooldown;
         _startPos = transform.position;
         CarriedItems = new List<Pickup>();
         _rb = GetComponent<Rigidbody2D>();
@@ -62,6 +66,13 @@ public abstract class PlayableCharacter : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+		remainingTime += Time.deltaTime * 1000;
+
+
+		if (remainingTime >= powerUpCooldown) {
+			remainingTime = powerUpCooldown;
+		}
+
         Vector2 direction = Controls.GetDirection(controls);
         if (!isDead && !isStunned && direction != Vector2.zero)
         {
@@ -95,6 +106,7 @@ public abstract class PlayableCharacter : MonoBehaviour
     {
         Debug.Log(gameObject.name + " used powerup.");
         powerUpAvailable = false;
+		remainingTime = 0.0f;
         StartCoroutine(StartPowerUp());
         yield return new WaitForSeconds(powerUpCooldown / 1000f);
         powerUpAvailable = true;
