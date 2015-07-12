@@ -30,6 +30,7 @@ GameObject:
   - 58: {fileID: 5815852}
   - 114: {fileID: 11487346}
   - 82: {fileID: 8204994}
+  - 95: {fileID: 9504628}
   m_Layer: 8
   m_Name: BearPrefab
   m_TagString: Bear
@@ -44,7 +45,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.790000021, y: -8.76000023, z: 0}
+  m_LocalPosition: {x: -.730000019, y: -8.67000008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 477344}
@@ -172,6 +173,23 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!95 &9504628
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187960}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f0e43121f34caf45b2afaa527cf4ce6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11486958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,8 +251,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9af0cf012293e844eb2591a78d29f085, type: 3}
+  m_SortingOrder: 20
+  m_Sprite: {fileID: 21300000, guid: c9ee201e40a49b4439528eb950af5109, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

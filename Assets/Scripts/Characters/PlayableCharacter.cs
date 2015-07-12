@@ -12,6 +12,7 @@ public enum CharacterType
 }
 
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class PlayableCharacter : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public abstract class PlayableCharacter : MonoBehaviour
     public AudioClip stunSound;
 
     protected AudioSource _audioSource;
+    protected Animator _animator;
 
     // Use this for initialization
     Vector2 _startPos;
@@ -50,30 +52,34 @@ public abstract class PlayableCharacter : MonoBehaviour
         CarriedItems = new List<Pickup>();
         _rb = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        //if (!isStunned)
-        //{
-            Vector2 direction = Controls.GetDirection(controls);
-            if (!isDead && !isStunned && direction != Vector2.zero)
-            {
-                _rb.velocity = Vector2.MoveTowards(_rb.velocity, direction.normalized * speed, 1);
-            }
-            else
-            {
-                _rb.velocity = Vector2.MoveTowards(_rb.velocity, Vector2.zero, inertiaFriction);
-            }
+        Vector2 direction = Controls.GetDirection(controls);
+        if (!isDead && !isStunned && direction != Vector2.zero)
+        {
+            _rb.velocity = Vector2.MoveTowards(_rb.velocity, direction.normalized * speed, 1);
 
-            if (!isDead && !isStunned && Controls.UsePowerUp(controls) && powerUpAvailable)
-                StartCoroutine(UsePowerUp());
-        //}
-        //else
-        //{
+            // face correct direction :
+            if (_rb.velocity.x != 0)
+                transform.localScale = new Vector3(_rb.velocity.x > 0 ? -1 : 1, 1, 1);
+            else if ((_rb.velocity.y != 0))
+                transform.localScale = new Vector3(_rb.velocity.y > 0 ? -1 : 1, 1, 1);
 
-        //}
+            // walk :
+            _animator.SetBool("IsWalking", true);
+        }
+        else
+        {
+            _rb.velocity = Vector2.MoveTowards(_rb.velocity, Vector2.zero, inertiaFriction);
+            _animator.SetBool("IsWalking", false);
+        }
+
+        if (!isDead && !isStunned && Controls.UsePowerUp(controls) && powerUpAvailable)
+            StartCoroutine(UsePowerUp());
     }
 
     protected virtual IEnumerator StartPowerUp()
