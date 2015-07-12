@@ -15,6 +15,7 @@ public class BounceAnimation : MonoBehaviour
 	{
 		_lowestPosition = transform.position;
 		_highestPosition = transform.position + offset;
+		_timer = Random.Range(0, period / 3);
 	}
 	
 	void Update()

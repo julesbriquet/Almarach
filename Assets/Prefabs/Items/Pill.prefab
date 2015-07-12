@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21280862}
   - 61: {fileID: 6105312}
   - 114: {fileID: 11448250}
+  - 114: {fileID: 11423040}
   m_Layer: 12
   m_Name: Pill
   m_TagString: Untagged
@@ -43,6 +44,20 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 3.81469727e-06}
   serializedVersion: 2
   m_Size: {x: 2.69000006, y: 2.52999997}
+--- !u!114 &11423040
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adaa003cc038c4d9aa6eac107f718dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: -.600000024, z: 0}
+  period: 2
+  lerpRate: .699999988
 --- !u!114 &11448250
 MonoBehaviour:
   m_ObjectHideFlags: 1

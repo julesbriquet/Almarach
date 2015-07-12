@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21287582}
   - 61: {fileID: 6157046}
   - 114: {fileID: 11410972}
+  - 114: {fileID: 11491012}
   m_Layer: 11
   m_Name: Cross
   m_TagString: Untagged
@@ -57,6 +58,20 @@ MonoBehaviour:
   CollectibleType: 0
   isPickedUp: 0
   Effect: {fileID: 19803996, guid: ee0f31992518e31459119418c9f2b179, type: 2}
+--- !u!114 &11491012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 147486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adaa003cc038c4d9aa6eac107f718dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: -.600000024, z: 0}
+  period: 2
+  lerpRate: .699999988
 --- !u!212 &21287582
 SpriteRenderer:
   m_ObjectHideFlags: 1
