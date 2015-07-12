@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Collider2D))]
 public class EndZone : MonoBehaviour
 {
     public PlayableCharacter CharacterThatTriggers;

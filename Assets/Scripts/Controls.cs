@@ -75,7 +75,7 @@ public class Controls
             case ControlScheme.KeyboardOKLM:
                 return Input.GetKey(KeyCode.Return);
             case ControlScheme.Keyboard5123:
-                return Input.GetKey(KeyCode.Keypad0);
+                return Input.GetKey(KeyCode.KeypadEnter);
             case ControlScheme.Gamepad1:
                 return GetJoystickButton(1);
             case ControlScheme.Gamepad2:

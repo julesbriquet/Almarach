@@ -11,8 +11,16 @@ public class ControlsSelection : MonoBehaviour
     public Transform[] playerKeyMappings;
     public Transform[] playerGamepadMappings;
 
+    public AudioClip moveSound;
+    public AudioClip badSound;
+    public AudioClip bearSound;
+    public AudioClip pigSound;
+    public AudioClip eagleSound;
+
     private Dictionary<ControlScheme, bool> _listenDirection;
     private Dictionary<ControlScheme, bool> _listenValidate;
+
+    private AudioSource _audioSource;
 
     // Use this for initialization
     void Start()
@@ -27,6 +35,7 @@ public class ControlsSelection : MonoBehaviour
             _listenDirection.Add(scheme, true);
             _listenValidate.Add(scheme, true);
         }
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -78,7 +87,15 @@ public class ControlsSelection : MonoBehaviour
         if (player != null)
         {
             if (!players.Any(p => p.characterType == GetFocusedCharacter(scheme)))
-                player.characterType = GetFocusedCharacter(scheme);
+            {
+                CharacterType characterType = GetFocusedCharacter(scheme);
+                player.characterType = characterType;
+                _audioSource.PlayOneShot(GetCharacterSound(characterType));
+            }
+            else
+            {
+                _audioSource.PlayOneShot(badSound);
+            }
         }
         else
         {
@@ -115,11 +132,13 @@ public class ControlsSelection : MonoBehaviour
         if (leftRight < 0)
         {
             //move left
+            _audioSource.PlayOneShot(moveSound);
             currentPos.x = currentPos.x == 0f ? 1f : currentPos.x - 0.5f;
         }
         else
         {
             //move right
+            _audioSource.PlayOneShot(moveSound);
             currentPos.x = currentPos.x == 1f ? 0f : currentPos.x + 0.5f;
         }
         rect.anchorMax = currentPos;
@@ -137,5 +156,16 @@ public class ControlsSelection : MonoBehaviour
             return CharacterType.Bear;
         else
             return CharacterType.Pig;
+    }
+
+    AudioClip GetCharacterSound(CharacterType characterType)
+    {
+        if (characterType == CharacterType.Eagle) {
+            return eagleSound;
+        } else if (characterType == CharacterType.Bear) {
+            return bearSound;
+        } else {
+            return pigSound;
+        }
     }
 }

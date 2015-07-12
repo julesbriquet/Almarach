@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,6 +11,7 @@ public enum CharacterType
     Bear
 }
 
+[RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class PlayableCharacter : MonoBehaviour
 {
@@ -32,8 +34,13 @@ public abstract class PlayableCharacter : MonoBehaviour
     public float RespawnTime;
 
     public int _score;
+    public GameObject scoreCount;
 
     public List<Pickup> CarriedItems;
+
+    public AudioClip stunSound;
+
+    protected AudioSource _audioSource;
 
     // Use this for initialization
     Vector2 _startPos;
@@ -42,6 +49,7 @@ public abstract class PlayableCharacter : MonoBehaviour
         _startPos = transform.position;
         CarriedItems = new List<Pickup>();
         _rb = GetComponent<Rigidbody2D>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -93,6 +101,7 @@ public abstract class PlayableCharacter : MonoBehaviour
         Debug.Log(gameObject.name + " stunned !");
         isStunned = true;
         _rb.velocity = Vector2.zero;
+        _audioSource.PlayOneShot(stunSound);
         yield return new WaitForSeconds(duration / 1000f);
         isStunned = false;
         Debug.Log(gameObject.name + " recovered.");
@@ -101,6 +110,7 @@ public abstract class PlayableCharacter : MonoBehaviour
     public void Score()
     {
         _score++;
+        scoreCount.GetComponent<Text>().text = _score.ToString();
         ReplaceAllItems();
     }
 
@@ -122,7 +132,7 @@ public abstract class PlayableCharacter : MonoBehaviour
         isDead = false;
     }
 
-    private void ReplaceAllItems()
+    protected virtual void ReplaceAllItems()
     {
         foreach (var item in CarriedItems)
         {

@@ -3,7 +3,14 @@ using System.Collections;
 
 public class BearKillTrigger : MonoBehaviour
 {
+    public AudioClip killSound;
     //private float _killCount;
+    private AudioSource _audioSource;
+
+    void Start()
+    {
+      _audioSource = GetComponentInParent<AudioSource>();
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -12,6 +19,7 @@ public class BearKillTrigger : MonoBehaviour
         {
             prey.Die();
             GetComponentInParent<Bear>().Score();
+            _audioSource.PlayOneShot(killSound);
             //_killCount++;
 
             //if (_killCount == 2)

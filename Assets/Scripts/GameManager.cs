@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
         {
             Application.LoadLevel(Application.loadedLevel);
         }
-
     }
 
 	public void EndGame()
@@ -116,17 +115,6 @@ public class GameManager : MonoBehaviour
         {
             GUI.Label(new Rect(0, 0, 300, 200), new GUIContent("Match is over. " + _winnerName + " has won."), new GUIStyle() { fontSize = 20 });
         }
-        else
-        {
-            int i = 0;
-            foreach (var player in PlayersObjects)
-            {
-                var character = player.Value;
-                GUI.Label(new Rect(0, 50 * i, 300, 200), new GUIContent(character.gameObject.name + " : " + character._score), new GUIStyle() { fontSize = 20 });
-                i++;
-            }
-        }
     }
-
     
 }
