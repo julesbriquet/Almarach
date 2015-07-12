@@ -11,6 +11,13 @@ public class Pickup : MonoBehaviour
 {
     public CollectibleType CollectibleType;
     public bool isPickedUp = false;
+    public ParticleSystem Effect;
+    private ParticleSystem _effect;
+
+    void Start()
+    {
+        _effect = (ParticleSystem)Instantiate(Effect, transform.position, Quaternion.identity);
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -37,6 +44,8 @@ public class Pickup : MonoBehaviour
 
     public void Respawn()
     {
+        _effect.Play();
+        isPickedUp = false;
         gameObject.SetActive(true);
     }
 

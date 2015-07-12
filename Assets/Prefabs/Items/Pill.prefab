@@ -9,8 +9,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 423254}
   - 212: {fileID: 21280862}
-  - 114: {fileID: 11448250}
   - 61: {fileID: 6105312}
+  - 114: {fileID: 11448250}
   m_Layer: 12
   m_Name: Pill
   m_TagString: Untagged
@@ -56,6 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollectibleType: 1
   isPickedUp: 0
+  Effect: {fileID: 19803996, guid: ee0f31992518e31459119418c9f2b179, type: 2}
 --- !u!212 &21280862
 SpriteRenderer:
   m_ObjectHideFlags: 1

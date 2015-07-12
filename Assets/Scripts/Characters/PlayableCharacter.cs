@@ -136,7 +136,7 @@ public abstract class PlayableCharacter : MonoBehaviour
     {
         foreach (var item in CarriedItems)
         {
-            item.gameObject.SetActive(true);
+            item.Respawn();
         }
         CarriedItems.Clear();
     }

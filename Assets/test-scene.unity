@@ -1518,6 +1518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollectibleType: 0
   isPickedUp: 0
+  Effect: {fileID: 0}
 --- !u!61 &314103515
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5134,6 +5135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollectibleType: 0
   isPickedUp: 0
+  Effect: {fileID: 0}
 --- !u!61 &1276182743
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5583,6 +5585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollectibleType: 0
   isPickedUp: 0
+  Effect: {fileID: 0}
 --- !u!61 &1456086980
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6161,11 +6164,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 423254, guid: 8285706c369cdee47950f6e86988e117, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.855647027
+      value: -.790000021
       objectReference: {fileID: 0}
     - target: {fileID: 423254, guid: 8285706c369cdee47950f6e86988e117, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -11.2336693
+      value: -11.2799997
       objectReference: {fileID: 0}
     - target: {fileID: 423254, guid: 8285706c369cdee47950f6e86988e117, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6195,6 +6198,11 @@ Prefab:
       propertyPath: m_Name
       value: Objectif Cochon
       objectReference: {fileID: 0}
+    - target: {fileID: 11448250, guid: 8285706c369cdee47950f6e86988e117, type: 2}
+      propertyPath: Effect
+      value: 
+      objectReference: {fileID: 19803996, guid: ee0f31992518e31459119418c9f2b179,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8285706c369cdee47950f6e86988e117, type: 2}
   m_IsPrefabParent: 0
