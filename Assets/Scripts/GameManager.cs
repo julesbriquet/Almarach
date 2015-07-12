@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
     void InitializeSceneControls()
     {
-        if (Players != null)
+        if (Players != null && Application.loadedLevel == 1)
         {
             foreach (var player in Players)
             {
@@ -125,21 +125,21 @@ public class GameManager : MonoBehaviour
             endGameUI.transform.FindChild("EndBear").GetComponent<Image>().enabled = true;
             _audioSource.PlayOneShot(bearWinSound);
             endText.color = new Color(1f, 200f / 255f, 41f / 255f);
-            endText.text = "Bear won!";
+            endText.text = "Bear won !";
         }
         else if (winner is Eagle)
         {
             endGameUI.transform.FindChild("EndEagle").GetComponent<Image>().enabled = true;
             _audioSource.PlayOneShot(eagleWinSound);
             endText.color = new Color(0f, 227f / 255f, 20f / 255f);
-            endText.text = "Eagle won!";
+            endText.text = "Eagle won !";
         }
         else
         {
             endGameUI.transform.FindChild("EndPig").GetComponent<Image>().enabled = true;
             _audioSource.PlayOneShot(pigWinSound);
             endText.color = new Color(182f / 255f, 87f / 255f, 161f / 255f);
-            endText.text = "Pig won!";
+            endText.text = "Pig won !";
         }
         endText.enabled = true;
         yield return new WaitForSeconds(4f);
