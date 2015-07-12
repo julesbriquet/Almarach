@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 
 public class ControlsSelection : MonoBehaviour
 {
@@ -10,8 +11,8 @@ public class ControlsSelection : MonoBehaviour
     public Transform[] playerOverlays;
     public Transform[] disneyAnimalSprites;
     public Transform[] animalSprites;
-    public Transform[] playerKeyMappings;
-    public Transform[] playerGamepadMappings;
+    public Transform[] schemeSelection;
+    public Sprite[] buttonConfigs;
 
     public AudioClip moveSound;
     public AudioClip badSound;
@@ -131,10 +132,12 @@ public class ControlsSelection : MonoBehaviour
         bool isPad = scheme.ToString().StartsWith("Gamepad");
 
         // show his key mapping :
-        if (isPad)
-            playerGamepadMappings[newPlayer.id - 1].gameObject.SetActive(true);
-        else
-            playerKeyMappings[newPlayer.id - 1].gameObject.SetActive(true);
+        schemeSelection[newPlayer.id - 1].GetComponent<Image>().overrideSprite =
+            buttonConfigs[(newPlayer.id - 1) * 4 + GetMappingIndex(scheme)];
+        //if (isPad)
+        //    playerGamepadMappings[newPlayer.id - 1].gameObject.SetActive(true);
+        //else
+        //    playerKeyMappings[newPlayer.id - 1].gameObject.SetActive(true);
 
         playerOverlays[newPlayer.id - 1].gameObject.SetActive(true);
     }
@@ -194,6 +197,24 @@ public class ControlsSelection : MonoBehaviour
             case CharacterType.Bear: return 2;
         }
         return -1;
+    }
+
+    int GetMappingIndex(ControlScheme scheme)
+    {
+        switch (scheme)
+        {
+            case ControlScheme.KeyboardZQSD:
+                return 3;
+            case ControlScheme.KeyboardOKLM:
+                return 2;
+            case ControlScheme.Keyboard5123:
+                return 1;
+            case ControlScheme.Gamepad1:
+            case ControlScheme.Gamepad2:
+            case ControlScheme.Gamepad3:
+            default:
+                return 0;
+        }
     }
 
 }
