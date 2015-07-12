@@ -133,12 +133,16 @@ public abstract class PlayableCharacter : MonoBehaviour
     protected virtual IEnumerator Respawn()
     {
         isDead = true;
+        GetComponent<Renderer>().enabled = false;
+
+        _respawnEffect.Play();
 
         yield return new WaitForSeconds(RespawnTime / 1000f);
         ReplaceAllItems();
         
         transform.position = _startPos;
-        _respawnEffect.Play();
+        GetComponent<Renderer>().enabled = true;
+        //_respawnEffect.Play();
 
         isDead = false;
     }

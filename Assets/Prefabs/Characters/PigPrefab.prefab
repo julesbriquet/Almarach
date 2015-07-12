@@ -171,6 +171,7 @@ MonoBehaviour:
   scoreCount: {fileID: 0}
   CarriedItems: []
   stunSound: {fileID: 8300000, guid: 4732384fe0e794bf1b5f9053d08a0cbb, type: 3}
+  RespawnEffect: {fileID: 19803996, guid: f3a6526c6d74d0d49b221256bfec1791, type: 2}
   PoopPrefab: {fileID: 11425668, guid: 67c65282ec616f04fad0da4b5ecc5e22, type: 2}
   poopSound: {fileID: 8300000, guid: 4bc8ee77cd96d47cf8d52c3939ceed9d, type: 3}
   pickupSound: {fileID: 8300000, guid: f7329bd276e71403781751992142a448, type: 3}

@@ -226,8 +226,11 @@ MonoBehaviour:
   scoreCount: {fileID: 0}
   CarriedItems: []
   stunSound: {fileID: 8300000, guid: 4732384fe0e794bf1b5f9053d08a0cbb, type: 3}
+  RespawnEffect: {fileID: 19803996, guid: f3a6526c6d74d0d49b221256bfec1791, type: 2}
   sprintSpeed: 7
   sprintSound: {fileID: 8300000, guid: e9f6db13108ed493bb33dd8362e26028, type: 3}
+  TrailSprite: {fileID: 0}
+  TrailFrequency: 0
 --- !u!212 &21203832
 SpriteRenderer:
   m_ObjectHideFlags: 1
