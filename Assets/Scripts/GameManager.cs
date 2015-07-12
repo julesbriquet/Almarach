@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     }
 
     public List<Player> Players;
-    public GameObject endGameUI;
     public AudioClip bearWinSound;
     public AudioClip eagleWinSound;
     public AudioClip pigWinSound;
@@ -118,6 +117,7 @@ public class GameManager : MonoBehaviour
     IEnumerator EndGameScreen(PlayableCharacter winner)
     {
         Controls.controlsEnabled = false;
+        GameObject endGameUI = GameObject.Find("EndScreens");
         endGameUI.GetComponent<Image>().enabled = true;
         Text endText = endGameUI.transform.FindChild("EndText").GetComponent<Text>();
         if (winner is Bear)
