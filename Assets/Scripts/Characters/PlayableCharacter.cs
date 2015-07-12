@@ -123,16 +123,26 @@ public abstract class PlayableCharacter : MonoBehaviour
         Debug.Log(gameObject.name + " stunned !");
         isStunned = true;
         _rb.velocity = Vector2.zero;
+		StartCoroutine(DoBlinks(0.1f));
         _audioSource.PlayOneShot(stunSound);
         yield return new WaitForSeconds(duration / 1000f);
         isStunned = false;
+		//StopCoroutine (DoBlinks(0);
         Debug.Log(gameObject.name + " recovered.");
     }
 
-    public void Score()
-    {
-        _score++;
-        scoreCount.GetComponent<Text>().text = _score.ToString();
+	IEnumerator DoBlinks(float blinkTime) {
+		while (isStunned) {
+			GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
+			yield return new WaitForSeconds(blinkTime);
+		}
+		GetComponent<Renderer>().enabled = true;
+	}
+	
+	public void Score()
+	{
+		_score++;
+		scoreCount.GetComponent<Text>().text = _score.ToString();
         ReplaceAllItems();
     }
 
