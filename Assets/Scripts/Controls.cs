@@ -79,7 +79,7 @@ public class Controls
         switch (controlScheme)
         {
             case ControlScheme.KeyboardZQSD:
-                return Input.GetKey(KeyCode.Space);
+                return Input.GetKey(KeyCode.LeftShift);
             case ControlScheme.KeyboardOKLM:
                 return Input.GetKey(KeyCode.Return);
             case ControlScheme.Keyboard5123:
