@@ -118,21 +118,30 @@ public class GameManager : MonoBehaviour
     IEnumerator EndGameScreen(PlayableCharacter winner)
     {
         Controls.controlsEnabled = false;
+        endGameUI.GetComponent<Image>().enabled = true;
+        Text endText = endGameUI.transform.FindChild("EndText").GetComponent<Text>();
         if (winner is Bear)
         {
             endGameUI.transform.FindChild("EndBear").GetComponent<Image>().enabled = true;
             _audioSource.PlayOneShot(bearWinSound);
+            endText.color = new Color(1f, 200f / 255f, 41f / 255f);
+            endText.text = "Bear won!";
         }
         else if (winner is Eagle)
         {
             endGameUI.transform.FindChild("EndEagle").GetComponent<Image>().enabled = true;
             _audioSource.PlayOneShot(eagleWinSound);
+            endText.color = new Color(0f, 227f / 255f, 20f / 255f);
+            endText.text = "Eagle won!";
         }
         else
         {
             endGameUI.transform.FindChild("EndPig").GetComponent<Image>().enabled = true;
             _audioSource.PlayOneShot(pigWinSound);
+            endText.color = new Color(182f / 255f, 87f / 255f, 161f / 255f);
+            endText.text = "Pig won!";
         }
+        endText.enabled = true;
         yield return new WaitForSeconds(4f);
         Controls.controlsEnabled = true;
         Application.LoadLevel(0);
