@@ -4,6 +4,8 @@ using System.Collections;
 public class SplashScreen : MonoBehaviour
 {
     public RectTransform splashScreen;
+    public RectTransform creditsScreen;
+    public RectTransform instructionsScreen;
     public RectTransform selectControlsScreen;
 
     // Use this for initialization
@@ -17,10 +19,26 @@ public class SplashScreen : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && selectControlsScreen.gameObject.activeSelf)
         {
             splashScreen.gameObject.SetActive(true);
+            creditsScreen.gameObject.SetActive(false);
+            instructionsScreen.gameObject.SetActive(false);
             selectControlsScreen.gameObject.SetActive(false);
-            selectControlsScreen.GetComponentInChildren<ControlsSelection>().ResetPlayersChoices();
+            selectControlsScreen.gameObject.GetComponentInChildren<ControlsSelection>().ResetPlayersChoices();
         }
         else if (Input.anyKeyDown && splashScreen.gameObject.activeSelf)
+        {
+            splashScreen.gameObject.SetActive(false);
+            instructionsScreen.gameObject.SetActive(false);
+            creditsScreen.gameObject.SetActive(true);
+            selectControlsScreen.gameObject.SetActive(false);
+        }
+        else if (Input.anyKeyDown && creditsScreen.gameObject.activeSelf)
+        {
+            splashScreen.gameObject.SetActive(false);
+            instructionsScreen.gameObject.SetActive(true);
+            creditsScreen.gameObject.SetActive(false);
+            selectControlsScreen.gameObject.SetActive(false);
+        }
+        else if (Input.anyKeyDown && instructionsScreen.gameObject.activeSelf)
         {
             StartCoroutine(GoToSelection());
         }
@@ -29,7 +47,9 @@ public class SplashScreen : MonoBehaviour
     IEnumerator GoToSelection()
     {
         yield return new WaitForSeconds(1);
+        creditsScreen.gameObject.SetActive(false);
         splashScreen.gameObject.SetActive(false);
+        instructionsScreen.gameObject.SetActive(false);
         selectControlsScreen.gameObject.SetActive(true);
     }
 }
